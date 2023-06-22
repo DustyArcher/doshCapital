@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "felix-titling-regular";
+  src: url("./fonts/Felixti.TTF") format("truetype");
+}
+
+.css-wztqdw-MuiPaper-root-MuiCard-root {
+  background-color: #22283f !important;
+}
+
+.css-jo7ai3 {
+  background-color: unset !important;
+}
+
+.css-6h1u2o {
+  height: unset !important;
+}
+
+.css-vuuwxc {
+  width: unset !important;
+}
+
+.css-28xbig-MuiGrid-root {
+  margin: unset !important;
+}
+
+.ppppppp {
+  padding: 0 40px;
+  padding-top: 200px;
+  background-color: #22283f;
+}
+
+.mmmmmmmm {
+  width: 30% !important;
+  position: "absolute";
+  top: 50%;
+  right: 20%;
+  transform: translate(-50%, -50%);
+  z-index: 9;
+}
+
+.css-1wnsr1i {
+  background-color: gray !important;
+}
+
+@media screen and (min-width: 1400px) {
+  .MuiContainer-root {
+    max-width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 667px) {
+  .cross {
+    font-size: 10px !important;
+  }
+
+  .home_text {
+    font-size: 25px !important;
+    line-height: 43px !important;
+
+  }
+
+  .ppppppp {
+    padding: 0 0;
+  }
+
+  .mmmmmmmm {
+    width: 100% !important;
+    top: 49.5% !important;
+    left: 50% !important;
+  }
+
+  .css-wztqdw-MuiPaper-root-MuiCard-root {
+    margin: 0 !important;
+  }
+}
+
+.css-xpkt69 {
+  background-color: unset !important;
+}
+
+/* 
+.css-hgn5yn {
+  background-color: #1a2335 !important;
+} */
+
+.css-1xw3iwd {
+  margin-top: 0px !important;
+  padding-top: 64px !important;
+  background-color: red !important;
+}

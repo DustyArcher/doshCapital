@@ -1,0 +1,28 @@
+.homebg {
+  border-radius: 30px !important;
+  height: 600px !important;
+  width: 99vw !important;
+  /* margin: 20px; */
+  object-fit: cover;
+}
+
+.css-1vcu4nh-MuiGrid-root {
+  padding-top: 100px !important;
+  padding-bottom: 62px !important;
+}
+
+.css-1qttxc2 {
+  height: unset !important;
+}
+
+@media screen and (max-width:667px) {
+  .homebg {
+    width: unset !important;
+    object-fit: contain;
+    height: 540px !important;
+  }
+
+  .css-suj8vv {
+    margin-top: 20px !important;
+  }
+}
