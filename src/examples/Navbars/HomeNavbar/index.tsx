@@ -137,7 +137,7 @@ function HomeNavbar({ routes, brand, transparent, light, action }: Props): JSX.E
     function handleScroll(e: any) {
       if (window.scrollY > 100) {
         navRef.current.style.backdropFilter = `saturate(200%) blur(30px)`;
-        navRef.current.style.backgroundColor = `rgb(2 43 111 / 80%)`;
+        navRef.current.style.backgroundColor = `#171F30`;
         navRef.current.style.borderRadius = `20px`;
       }
       if (window.scrollY === 0) {

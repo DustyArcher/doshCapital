@@ -27,7 +27,7 @@ import bgImage from "assets/images/bg-pricing.jpg";
 import { Container } from "@mui/system";
 import HomeNavbar from "examples/Navbars/HomeNavbar";
 import video from "assets/hero.mp4";
-import homeBg from "assets/images/dosh/homeBg.jpg";
+import homeBg from "assets/images/dosh/homeBg.png";
 import { Box, Button, Fade, Icon, Link, Modal, Typography } from "@mui/material";
 import breakpoints from "assets/theme/base/breakpoints";
 import MDButton from "../../../../../components/MDButton";
@@ -128,7 +128,7 @@ function Header({ tabValue, tabHandler, children }: Props): JSX.Element {
                 </MDBox>
                 <MDBox mb={1}>
                   <MDTypography
-                    variant="h1"
+                    variant="h3"
                     color="white"
                     fontWeight="bold"
                     align="right"
@@ -138,7 +138,7 @@ function Header({ tabValue, tabHandler, children }: Props): JSX.Element {
                     AUTOMATED TRADING NETWORKING
                   </MDTypography>
                   <MDTypography
-                    variant="h1"
+                    variant="h3"
                     color="white"
                     fontWeight="bold"
                     align="right"
@@ -201,12 +201,12 @@ function Header({ tabValue, tabHandler, children }: Props): JSX.Element {
                       open={open}
                       onClose={handleClose}
                       closeAfterTransition
-                      slots={{ backdrop: Backdrop }}
-                      slotProps={{
-                        backdrop: {
-                          timeout: 500,
-                        },
-                      }}
+                      // slots={{ backdrop: Backdrop }}
+                      // slotProps={{
+                      //   backdrop: {
+                      //     timeout: 500,
+                      //   },
+                      // }}
                     >
                       <Fade in={open}>
                         <Box sx={style}>

@@ -1,0 +1,10 @@
+.paddingResponsive {
+    padding: "0px 80px" !important;
+    background-color: red !important;
+  }
+  
+  @media screen and (max-width:767px) {
+    #paddingResponsive {
+      padding: "0px 0px" !important;
+    }
+  }

@@ -3,6 +3,16 @@
   src: url("./fonts/Felixti.TTF") format("truetype");
 }
 
+#paddingResponsive {
+  padding: "0px 80px" !important;
+}
+
+@media screen and (max-width:767px) {
+  #paddingResponsive {
+    padding: "0px 0px" !important;
+  }
+}
+
 .css-wztqdw-MuiPaper-root-MuiCard-root {
   background-color: #22283f !important;
 }

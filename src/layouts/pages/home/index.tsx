@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./index.css";
 
 // @mui material components
 import Container from "@mui/material/Container";
@@ -18,12 +19,13 @@ import Configurator from "../../../examples/Configurator";
 import { Box, useMediaQuery } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import { useMaterialUIController } from "context";
+// import useMediaQuery from '@mui/material/useMediaQuery';
 
 function HomePage(): JSX.Element {
   const [tabValue, setTabValue] = useState<number>(0);
   const [prices, setPrices] = useState<string[]>(["59", "89", "99"]);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("sm"));
 
   const handleSetTabValue = (event: any, newValue: any) => {
     setTabValue(newValue);
@@ -42,11 +44,10 @@ function HomePage(): JSX.Element {
       <Header tabValue={tabValue} tabHandler={handleSetTabValue}>
         <></>
       </Header>
-      {/* <div className="ppppppp"> */}
       <Box
         sx={{
-          padding: isMobile ? "0 0px" : "0 40px",
-          paddingTop: "200px",
+          padding: isMobile ? "0 10px" : "0 40px",
+          paddingTop: "180px",
           background: darkMode ? "#1A2035!important" : "#F0F2F5!important",
         }}
       >
@@ -60,7 +61,6 @@ function HomePage(): JSX.Element {
         </Container>
         <ContactInfo />
       </Box>
-
       <Footer />
       <Configurator />
     </PageLayout>

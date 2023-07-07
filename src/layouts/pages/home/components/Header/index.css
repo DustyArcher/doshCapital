@@ -1,9 +1,11 @@
 .homebg {
   border-radius: 30px !important;
-  height: 600px !important;
-  width: 99vw !important;
+  height: 477px !important;
+  width: 97vw !important;
   /* margin: 20px; */
   object-fit: cover;
+  margin: 0 auto;
+  margin-left: 1%;
 }
 
 .css-1vcu4nh-MuiGrid-root {
@@ -19,7 +21,7 @@
   .homebg {
     width: unset !important;
     object-fit: contain;
-    height: 540px !important;
+    /* height: 540px !important; */
   }
 
   .css-suj8vv {

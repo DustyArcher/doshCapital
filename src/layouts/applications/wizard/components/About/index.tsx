@@ -39,7 +39,7 @@ import breakpoints from "assets/theme/base/breakpoints";
 
 // Images
 import dusty from "assets/images/Me.jpg";
-import backgroundImage from "assets/images/bg-profile.jpeg";
+import backgroundImage from "assets/images/Sydney.jpg";
 import { Avatar, AvatarGroup, Box, Container, Typography } from "@mui/material";
 import ComplexProjectCard from "examples/Cards/ProjectCards/ComplexProjectCard";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -105,7 +105,7 @@ function About({ children }: { children?: ReactNode }): JSX.Element {
   console.log(mission, "gggggg");
 
   return (
-    <div>
+    <DashboardLayout>
       <DashboardNavbar />
       <MDBox position="relative" mb={5} mt={3}>
         <MDBox
@@ -386,7 +386,7 @@ function About({ children }: { children?: ReactNode }): JSX.Element {
         </Card>
       </div>
       <Footer />
-    </div>
+    </DashboardLayout>
   );
 }
 
