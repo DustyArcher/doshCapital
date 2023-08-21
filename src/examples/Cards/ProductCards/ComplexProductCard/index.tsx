@@ -15,6 +15,7 @@ import { useMaterialUIController } from "context";
 import { dark } from "@mui/material/styles/createPalette";
 import { Theme } from "@mui/material/styles";
 import MDButton from "components/MDButton";
+import { Link } from "react-router-dom";
 
 // Declaring prop types for the ComplexProjectCard
 interface Props {
@@ -84,7 +85,7 @@ function ComplexProductCard({
             </MDTypography>
           </MDBox>
         </MDBox>
-        {/* <Divider /> */}
+
         <MDBox
           display="flex"
           gap={2}
@@ -93,9 +94,16 @@ function ComplexProductCard({
           mt={3}
           px={1}
         >
-          <MDButton variant="contained" color="info" size="small" sx={{ padding: ".5rem 1.9rem" }}>
-            Buy: $1000
-          </MDButton>
+          <Link to={`/ecommerce/products/product-page/${title}`}>
+            <MDButton
+              variant="contained"
+              color="info"
+              size="small"
+              sx={{ padding: ".5rem 1.9rem" }}
+            >
+              Buy: $1000
+            </MDButton>
+          </Link>
           <MDButton variant="contained" color="info" size="small" sx={{ padding: ".5rem 1.2rem" }}>
             Rent: $200/M
           </MDButton>

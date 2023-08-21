@@ -275,7 +275,7 @@ const routes = [
           {
             name: "Product Page",
             key: "product-page",
-            route: "/ecommerce/products/product-page",
+            route: "/ecommerce/products/product-page/:product",
             component: <ProductPage />,
           },
         ],
