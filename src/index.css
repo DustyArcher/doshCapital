@@ -98,3 +98,18 @@
   padding-top: 64px !important;
   background-color: red !important;
 }
+
+.css-1dur2uz-MuiPaper-root-MuiDialog-paper {
+  max-width: 600px !important;
+  width: 100%;
+}
+
+.css-1yo2nfl-MuiDialogContent-root {
+  padding: 30px !important;
+}
+
+.ElementsApp {
+  padding: 20px !important;
+  border: 2px solid red !important;
+  height: 50px !important;
+}

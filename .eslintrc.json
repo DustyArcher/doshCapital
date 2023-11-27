@@ -14,7 +14,7 @@
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint", "import", "prettier"],
   "rules": {
-    "prettier/prettier": [
+    "prettier/prettier": [ 
       "error",
       {
         "endOfLine": "auto"

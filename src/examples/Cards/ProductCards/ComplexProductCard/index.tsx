@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -16,6 +16,7 @@ import { dark } from "@mui/material/styles/createPalette";
 import { Theme } from "@mui/material/styles";
 import MDButton from "components/MDButton";
 import { Link } from "react-router-dom";
+import { DataContext } from "context/DataContext";
 
 // Declaring prop types for the ComplexProjectCard
 interface Props {
@@ -43,6 +44,7 @@ function ComplexProductCard({
   dropdown,
 }: Props): JSX.Element {
   const [controller, dispatch] = useMaterialUIController();
+  const { setProductDatas } = useContext(DataContext);
 
   return (
     <Card sx={{ maxWidth: "20rem" }}>
@@ -100,6 +102,7 @@ function ComplexProductCard({
               color="info"
               size="small"
               sx={{ padding: ".5rem 1.9rem" }}
+              onClick={() => setProductDatas({ image, title, description, price: "1000" })}
             >
               Buy: $1000
             </MDButton>

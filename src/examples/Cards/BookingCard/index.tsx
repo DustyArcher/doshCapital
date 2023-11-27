@@ -39,8 +39,6 @@ function BookingCard({ image, title, header, nature, description, action }: Prop
         sx={{ transition: "transform 300ms cubic-bezier(0.34, 1.61, 0.7, 1)" }}
       >
         <MDBox
-
-
           component="img"
           src={image}
           alt={title}
@@ -71,17 +69,28 @@ function BookingCard({ image, title, header, nature, description, action }: Prop
         {/* <MDBox display="flex" justifyContent="center" alignItems="center" mt={action ? -8 : -4.25}>
           {action}
         </MDBox> */}
-        <MDTypography variant="body2" align="center" fontWeight="regular" fontSize="10px" sx={{ mt: 4 }}>
+        <MDTypography
+          variant="body2"
+          align="center"
+          fontWeight="regular"
+          fontSize="10px"
+          sx={{ mt: 4 }}
+        >
           {header}
         </MDTypography>
-        <MDTypography variant="h3" align="center" fontWeight="regular" style={{fontFamily:"felix-titling-regular"}}>
+        <MDTypography
+          variant="h3"
+          align="center"
+          fontWeight="regular"
+          style={{ fontFamily: "felix-titling-regular" }}
+        >
           {title}
         </MDTypography>
-        <MDTypography sx={{ fontSize: ".7rem" }} align="center" fontWeight="regular" fontSize="8px" >
+        <MDTypography sx={{ fontSize: ".7rem" }} align="center" fontWeight="regular" fontSize="8px">
           {nature}
         </MDTypography>
         <MDBox
-        style={{fontFamily:"footlight-mt-light-regular"}}
+          style={{ fontFamily: "footlight-mt-light-regular" }}
           sx={{ fontSize: "1rem" }}
           px={2}
           pb={4}

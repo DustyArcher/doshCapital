@@ -22,7 +22,6 @@ import MDButton from "components/MDButton";
 
 import axios from "axios";
 
-
 // Authentication layout components
 import BasicLayout from "layouts/authentication/components/BasicLayout";
 
@@ -34,32 +33,30 @@ function Basic(): JSX.Element {
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const handleSubmit=async(event:any)=>{
-event.preventDefault()
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
 
-const form = event.target
-const email = form.email.value;
-const password = form.password.value
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-const data = {
-  email,
-  password
-}
+    const data = {
+      email,
+      password,
+    };
 
-try {
-  const res = await axios.post("http://localhost:8000/api/users/login", data)
- if(res.data.status ===200){
-  localStorage.setItem("doshToken", res.data.accessToken)
-  navigate("/")
- }
-  
-} catch (error) {
-  console.error('Error:', error);
-}
-
-  }
+    try {
+      const res = await axios.post("http://localhost:8000/api/users/login", data);
+      if (res.data.status === 200) {
+        localStorage.setItem("doshToken", res.data.accessToken);
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <BasicLayout image={bgImage}>
@@ -99,10 +96,10 @@ try {
         <MDBox pt={4} pb={3} px={3}>
           <MDBox component="form" role="form" onSubmit={handleSubmit}>
             <MDBox mb={2}>
-              <MDInput type="email" label="Email" fullWidth name="email"/>
+              <MDInput type="email" label="Email" fullWidth name="email" />
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="password" label="Password" fullWidth name="password"/>
+              <MDInput type="password" label="Password" fullWidth name="password" />
             </MDBox>
             <MDBox display="flex" alignItems="center" ml={-1}>
               <Switch checked={rememberMe} onChange={handleSetRememberMe} />

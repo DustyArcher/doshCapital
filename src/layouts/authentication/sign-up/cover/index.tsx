@@ -18,8 +18,6 @@ import CoverLayout from "layouts/authentication/components/CoverLayout";
 // Images
 import bgImage from "assets/images/bg-sign-up-cover.jpeg";
 
-
-
 function Cover(): JSX.Element {
   const action = {
     type: "internal",
@@ -28,41 +26,34 @@ function Cover(): JSX.Element {
     color: "info",
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+    const form = event.target;
 
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
 
+    const data = {
+      name,
+      email,
+      password,
+    };
 
+    try {
+      const res = await axios.post("http://localhost:8000/api/users/signup", data);
+      if (res.data.status === 200) {
+        localStorage.setItem("doshToken", res.data.accessToken);
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
 
-
- const handleSubmit=async(event:any)=>{
-event.preventDefault()
-const form = event.target;
-
-const name = form.name.value;
-const email = form.email.value;
-const password = form.password.value;
-
-
-const data = {
-  name,
-  email,
-  password
-}
-
-try {
-  const res = await axios.post("http://localhost:8000/api/users/signup", data)
- if(res.data.status ===200){
-  localStorage.setItem("doshToken", res.data.accessToken)
-  navigate("/")
- }
-  
-} catch (error) {
-  console.error('Error:', error);
-}
-
-console.log(data,"ddddd")
-  }
+    console.log(data, "ddddd");
+  };
 
   return (
     <CoverLayout action={action} image={bgImage}>
@@ -91,10 +82,16 @@ console.log(data,"ddddd")
               <MDInput type="text" label="Name" variant="standard" fullWidth name="name" />
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="email" label="Email" variant="standard" fullWidth  name="email"/>
+              <MDInput type="email" label="Email" variant="standard" fullWidth name="email" />
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="password" label="Password" variant="standard" fullWidth name="password"/>
+              <MDInput
+                type="password"
+                label="Password"
+                variant="standard"
+                fullWidth
+                name="password"
+              />
             </MDBox>
             <MDBox display="flex" alignItems="center" ml={-1}>
               <Checkbox />

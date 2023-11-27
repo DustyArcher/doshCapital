@@ -18,7 +18,7 @@ import MDButton from "../../../../../components/MDButton";
 function ContactInfo(): JSX.Element {
   return (
     <Container>
-      <MDBox p={3} mb={4} >
+      <MDBox p={3} mb={4}>
         <MDTypography align="center" variant="h2">
           Don&#39;t Miss out
         </MDTypography>

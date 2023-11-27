@@ -5,11 +5,14 @@ import "./index.css";
 
 //  React TS Context Provider
 import { MaterialUIControllerProvider } from "context";
+import DataProvider from "context/DataContext";
 
 ReactDOM.render(
   <BrowserRouter>
     <MaterialUIControllerProvider>
-      <App />
+      <DataProvider>
+        <App />
+      </DataProvider>
     </MaterialUIControllerProvider>
   </BrowserRouter>,
   document.getElementById("root")

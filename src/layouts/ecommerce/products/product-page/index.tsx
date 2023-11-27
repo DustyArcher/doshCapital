@@ -18,8 +18,13 @@ import ProductInfo from "layouts/ecommerce/products/product-page/components/Prod
 
 // Data
 import dataTableData from "layouts/ecommerce/products/product-page/data/dataTableData";
+import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { DataContext } from "context/DataContext";
 
 function ProductPage(): JSX.Element {
+  const { product } = useParams();
+  const { productDatas } = useContext(DataContext);
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -34,10 +39,10 @@ function ProductPage(): JSX.Element {
 
             <Grid container spacing={3}>
               <Grid item xs={12} lg={6} xl={5}>
-                <ProductImages />
+                <ProductImages productDatas={productDatas} />
               </Grid>
               <Grid item xs={12} lg={5} sx={{ mx: "auto" }}>
-                <ProductInfo />
+                <ProductInfo product={product} productDatas={productDatas} />
               </Grid>
             </Grid>
 
