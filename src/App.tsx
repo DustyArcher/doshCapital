@@ -37,6 +37,7 @@ import { useMaterialUIController, setMiniSidenav, setOpenConfigurator, setDarkMo
 // Images
 import brandWhite from "assets/images/dosh/doshLogo.png";
 import brandDark from "assets/images/dosh/doshLogo.png";
+import useAuthCheck from "hooks/useAuthCheck";
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
@@ -143,7 +144,9 @@ export default function App() {
     </MDBox>
   );
 
-  return direction === "rtl" ? (
+  const authChecked = useAuthCheck()
+
+  return authChecked?direction === "rtl" ? (
     <CacheProvider value={rtlCache}>
       <ThemeProvider theme={darkMode ? themeDarkRTL : themeRTL}>
         <CssBaseline />
@@ -191,5 +194,5 @@ export default function App() {
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </ThemeProvider>
-  );
+  ):<div></div>
 }

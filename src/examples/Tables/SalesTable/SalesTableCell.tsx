@@ -18,7 +18,7 @@ function SalesTableCell({ title, content, image, noBorder, ...rest }: Props): JS
   let template;
 
   if (image) {
-    template = (
+    template = (  
       <TableCell {...rest} align="left" width="30%" sx={{ border: noBorder && 0 }}>
         <MDBox display="flex" alignItems="center" width="max-content">
           <MDBox

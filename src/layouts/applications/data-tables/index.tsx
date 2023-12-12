@@ -14,12 +14,13 @@ import DataTable from "examples/Tables/DataTable";
 // Data
 import dataTableData from "layouts/applications/data-tables/data/dataTableData";
 import { useEffect, useState } from "react";
+import { BASE_URL } from "config/config";
 
 function DataTables(): JSX.Element {
   const [fetchData, setFetchData] = useState([]);
 
   const handleFetchData = () => {
-    fetch("http://localhost:8000/api/users")
+    fetch(`${BASE_URL}/api/users`)
       .then((res) => res.json())
       .then((data) => setFetchData(data.data));
   };

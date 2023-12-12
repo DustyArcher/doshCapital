@@ -32,6 +32,7 @@ import { Box, Button, Fade, Icon, Link, Modal, Typography } from "@mui/material"
 import breakpoints from "assets/theme/base/breakpoints";
 import MDButton from "../../../../../components/MDButton";
 import axios from "axios";
+import { BASE_URL } from "config/config";
 
 // Declaring props types for Header
 interface Props {
@@ -80,10 +81,10 @@ function Header({ tabValue, tabHandler, children }: Props): JSX.Element {
       email,
     };
 
-    // console.log(data,"dddd")
+
 
     try {
-      const res = await axios.post("http://localhost:8000/api/send-email", data);
+      const res = await axios.post(`${BASE_URL}/api/send-email`, data);
       if (res.data.status === 200) {
         setOpen(false);
       }

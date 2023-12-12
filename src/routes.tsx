@@ -61,6 +61,8 @@ import profilePicture from "assets/images/team-3.jpg";
 import HomePage from "./layouts/pages/home";
 import Products from "layouts/pages/products";
 import About from "layouts/applications/wizard/components/About";
+import PrivateRoute from "Private.routes";
+import Portfolio from "layouts/dashboards/portfolio";
 
 const routes = [
   {
@@ -101,6 +103,12 @@ const routes = [
         key: "analytics",
         route: "/dashboards/analytics",
         component: <Analytics />,
+      },
+      {
+        name: "Portfolio",
+        key: "portfolio",
+        route: "/dashboards/portfolio",
+        component: <Portfolio />,
       },
       {
         name: "Sales",
@@ -199,7 +207,7 @@ const routes = [
         name: "Products",
         key: "products",
         route: "/pages/products",
-        component: <Products />,
+        component: <PrivateRoute><Products /></PrivateRoute>,
       },
       {
         name: "Pricing Page",

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 
 // react-router-dom components
 import { Link } from "react-router-dom";
@@ -12,15 +12,21 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDInput from "components/MDInput";
 import MDButton from "components/MDButton";
+import axios from "axios";
 
 // Authentication layout components
 import CoverLayout from "layouts/authentication/components/CoverLayout";
 
 // Images
 import bgImage from "assets/images/bg-sign-in-cover.jpeg";
+import {  useNavigate } from "react-router";
+import { DataContext } from "context/DataContext";
+import { BASE_URL } from "config/config";
 
 function Cover(): JSX.Element {
   const [rememberMe, setRememberMe] = useState<boolean>(true);
+
+  const {setUserInfo}= useContext(DataContext)
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
 
@@ -30,6 +36,62 @@ function Cover(): JSX.Element {
     label: "sign up",
     color: "info",
   };
+
+  const [errorMessage, setErrorMessage]=useState<string>("")
+  const [isLoading,setIsLoading]=useState<boolean>(false)
+
+  const navigate = useNavigate()
+
+  const handleSubmit =async(event:any)=>{
+    event.preventDefault()
+
+
+    const form = event.target;
+
+    const email = form.email.value;
+    const password = form.password.value;
+
+    const data = {
+      email,
+      password
+    }
+
+    try {
+
+        const res = await axios.post(`${BASE_URL}/api/users/login`, data);
+
+        if (res?.data?.status === 200) {
+          const userDetails = {
+            name:res?.data?.user?.name,
+            email: res?.data?.user?.email,
+            userId: res?.data?.user?._id,
+            accessToken: res?.data?.accessToken
+          }
+          
+          setErrorMessage("")
+          setIsLoading(false)
+          
+          setUserInfo(userDetails)
+          localStorage.setItem("doshToken", JSON.stringify(userDetails));
+          navigate("/");
+        }
+      } 
+      
+   
+    catch (error:any) {
+      if (error.response) {
+        setErrorMessage(`${error.response.data?.message}`);
+      } else if (error.request) {
+        console.error('Request error:', error.request);
+      } else {
+        console.error('Error message:', error.message);
+      }
+      console.error('Error:', error);
+      setIsLoading(false)
+    }
+
+
+  }
 
   return (
     <CoverLayout action={action} image={bgImage}>
@@ -53,15 +115,17 @@ function Cover(): JSX.Element {
           </MDTypography>
         </MDBox>
         <MDBox pt={4} pb={3} px={3}>
-          <MDBox component="form" role="form">
+          <MDBox component="form" role="form" onSubmit={handleSubmit}>
             <MDBox mb={2}>
-              <MDInput
+            <MDInput
                 type="email"
                 label="Email"
                 variant="standard"
+                name="email"
                 fullWidth
                 placeholder="john@example.com"
                 InputLabelProps={{ shrink: true }}
+                required
               />
             </MDBox>
             <MDBox mb={2}>
@@ -69,9 +133,11 @@ function Cover(): JSX.Element {
                 type="password"
                 label="Password"
                 variant="standard"
+                name="password"
                 fullWidth
                 placeholder="************"
                 InputLabelProps={{ shrink: true }}
+                required
               />
             </MDBox>
             <MDBox display="flex" alignItems="center" ml={-1}>
@@ -86,8 +152,11 @@ function Cover(): JSX.Element {
                 &nbsp;&nbsp;Remember me
               </MDTypography>
             </MDBox>
+            <MDBox>
+            <MDTypography variant="button" color="error">{errorMessage}</MDTypography>
+            </MDBox>
             <MDBox mt={4} mb={1}>
-              <MDButton variant="gradient" color="info" fullWidth>
+              <MDButton variant="gradient" color="info" fullWidth type="submit">
                 sign in
               </MDButton>
             </MDBox>

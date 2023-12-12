@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 
 // react-router-dom components
 import { Link, useNavigate } from "react-router-dom";
@@ -27,11 +27,18 @@ import BasicLayout from "layouts/authentication/components/BasicLayout";
 
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
+import { DataContext } from "context/DataContext";
+import { BASE_URL } from "config/config";
 
 function Basic(): JSX.Element {
   const [rememberMe, setRememberMe] = useState<boolean>(false);
 
+  const {setUserInfo}= useContext(DataContext)
+
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
+
+  const [errorMessage, setErrorMessage]=useState<string>("")
+  const [isLoading,setIsLoading]=useState<boolean>(false)
 
   const navigate = useNavigate();
 
@@ -48,14 +55,38 @@ function Basic(): JSX.Element {
     };
 
     try {
-      const res = await axios.post("http://localhost:8000/api/users/login", data);
-      if (res.data.status === 200) {
-        localStorage.setItem("doshToken", res.data.accessToken);
+
+      const res = await axios.post(`${BASE_URL}/api/users/login`, data);
+
+      if (res?.data?.status === 200) {
+        const userDetails = {
+          name:res?.data?.user?.name,
+          email: res?.data?.user?.email,
+          userId: res?.data?.user?._id,
+          accessToken: res?.data?.accessToken
+        }
+        
+        setErrorMessage("")
+        setIsLoading(false)
+        
+        setUserInfo(userDetails)
+        localStorage.setItem("doshToken", JSON.stringify(userDetails));
         navigate("/");
       }
-    } catch (error) {
-      console.error("Error:", error);
+    } 
+    
+ 
+  catch (error:any) {
+    if (error.response) {
+      setErrorMessage(`${error.response.data?.message}`);
+    } else if (error.request) {
+      console.error('Request error:', error.request);
+    } else {
+      console.error('Error message:', error.message);
     }
+    console.error('Error:', error);
+    setIsLoading(false)
+  }
   };
 
   return (
@@ -96,10 +127,10 @@ function Basic(): JSX.Element {
         <MDBox pt={4} pb={3} px={3}>
           <MDBox component="form" role="form" onSubmit={handleSubmit}>
             <MDBox mb={2}>
-              <MDInput type="email" label="Email" fullWidth name="email" />
+              <MDInput type="email" label="Email" fullWidth name="email" required/>
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="password" label="Password" fullWidth name="password" />
+              <MDInput type="password" label="Password" fullWidth name="password" required/>
             </MDBox>
             <MDBox display="flex" alignItems="center" ml={-1}>
               <Switch checked={rememberMe} onChange={handleSetRememberMe} />
@@ -113,8 +144,11 @@ function Basic(): JSX.Element {
                 &nbsp;&nbsp;Remember me
               </MDTypography>
             </MDBox>
+            <MDBox>
+              <MDTypography variant="button" color="error">{errorMessage}</MDTypography>
+            </MDBox>
             <MDBox mt={4} mb={1}>
-              <MDButton variant="gradient" color="info" fullWidth type="submit">
+              <MDButton variant="gradient" color="info" fullWidth type="submit" disabled={isLoading}>
                 sign in
               </MDButton>
             </MDBox>

@@ -15,6 +15,9 @@ import Accounts from "layouts/pages/account/settings/components/Accounts";
 import Notifications from "layouts/pages/account/settings/components/Notifications";
 import Sessions from "layouts/pages/account/settings/components/Sessions";
 import DeleteAccount from "layouts/pages/account/settings/components/DeleteAccount";
+import CreatePool from "./components/CreatePool/CreatePool";
+import Deposite from "./components/Deposite/Deposite";
+import MyDepositedPool from "./components/MyDepositedPool";
 
 function Settings(): JSX.Element {
   return (
@@ -29,6 +32,12 @@ function Settings(): JSX.Element {
               <Grid container spacing={3}>
                 <Grid item xs={12}>
                   <Header />
+                </Grid>
+                <Grid item xs={12}>
+                  <Deposite />
+                </Grid>
+                <Grid item xs={12}>
+                  <MyDepositedPool />
                 </Grid>
                 <Grid item xs={12}>
                   <BasicInfo />
@@ -50,6 +59,9 @@ function Settings(): JSX.Element {
                 </Grid>
                 <Grid item xs={12}>
                   <DeleteAccount />
+                </Grid>
+                <Grid item xs={12}>
+                  <CreatePool/>
                 </Grid>
               </Grid>
             </MDBox>

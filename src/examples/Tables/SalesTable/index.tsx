@@ -55,7 +55,7 @@ function SalesTable({ title, rows, shadow }: Props): JSX.Element {
   );
 
   return (
-    <TableContainer sx={{ height: "100%", boxShadow: !shadow && "none" }}>
+    <TableContainer sx={{ height: "380px", boxShadow: !shadow && "none", overflowY:"scroll" }}>
       <Table>
         {title ? (
           <TableHead>
